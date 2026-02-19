@@ -1142,7 +1142,7 @@ function SegDetail({
             letterSpacing: "-0.5px",
           }}
         >
-          genius<span style={{ color: "#3b82f6" }}>.</span>
+          Doctor Alex Practice
         </div>
       </div>
       <div
@@ -1155,7 +1155,7 @@ function SegDetail({
           marginBottom: 16,
         }}
       >
-        MCAT Exam Study
+        genius MCAT exam practice
       </div>
       <button
         onClick={onBack}
@@ -1393,7 +1393,7 @@ function Dashboard({
             letterSpacing: "-1px",
           }}
         >
-          genius<span style={{ color: "#3b82f6" }}>.</span>
+          Doctor Alex Practice
         </div>
         <div
           style={{
@@ -1405,7 +1405,7 @@ function Dashboard({
             marginTop: 3,
           }}
         >
-          MCAT Exam Study
+          genius MCAT exam practice
         </div>
       </div>
       <div

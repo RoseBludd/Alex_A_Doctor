@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Alex – MCAT Exam Study",
-  description: "MCAT study app with quiz and flashcard modes",
+  title: "Doctor Alex Practice",
+  description: "genius MCAT exam practice",
 };
 
 export default function RootLayout({ children }) {
