@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "db:setup": "node scripts/run-migrations.js",
-    "db:seed": "node scripts/seed-db.js"
+    "db:seed": "node scripts/seed-db.js",
+    "verify:production": "node scripts/verify-production.js"
   },
   "dependencies": {
     "next": "14.2.18",
