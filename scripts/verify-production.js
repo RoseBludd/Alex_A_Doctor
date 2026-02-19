@@ -27,12 +27,14 @@ async function main() {
 
   const hasTitle = html.includes("Doctor Alex Practice");
   const hasSubtitle = html.includes("genius MCAT exam practice");
+  const noStudyIdUi = !html.includes("Your study ID") && !html.includes("Link this browser");
 
   console.log("Status:", status, ok ? "OK" : "FAIL");
   console.log("Title 'Doctor Alex Practice':", hasTitle ? "YES" : "NO");
   console.log("Subtitle 'genius MCAT exam practice':", hasSubtitle ? "YES" : "NO");
+  console.log("Single-user default (no paste/link UI):", noStudyIdUi ? "YES" : "NO");
 
-  if (ok && hasTitle && hasSubtitle) {
+  if (ok && hasTitle && hasSubtitle && noStudyIdUi) {
     console.log("\nProduction verification PASSED.");
     process.exit(0);
   }
@@ -40,6 +42,7 @@ async function main() {
   if (!ok) console.error("Expected 2xx, got", status);
   if (!hasTitle) console.error("Missing branding title in response.");
   if (!hasSubtitle) console.error("Missing subtitle in response.");
+  if (!noStudyIdUi) console.error("Unexpected study ID / link UI (single-user default expected).");
   console.log("\nProduction verification FAILED.");
   process.exit(1);
 }

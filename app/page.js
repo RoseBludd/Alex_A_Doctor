@@ -14,12 +14,42 @@ import McatApp from "./components/McatApp";
 
 const CLIENT_ID_KEY = "alex_mcat_client_id";
 
+let memoryFallback = null;
+
+function getStorageItem(key) {
+  if (typeof window === "undefined") return null;
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    try {
+      return sessionStorage.getItem(key);
+    } catch {
+      return key === CLIENT_ID_KEY ? memoryFallback : null;
+    }
+  }
+}
+
+function setStorageItem(key, value) {
+  if (typeof window === "undefined") return;
+  try {
+    localStorage.setItem(key, value);
+    return;
+  } catch {
+    try {
+      sessionStorage.setItem(key, value);
+      return;
+    } catch {
+      if (key === CLIENT_ID_KEY) memoryFallback = value;
+    }
+  }
+}
+
 function getClientId() {
   if (typeof window === "undefined") return "";
-  let id = localStorage.getItem(CLIENT_ID_KEY);
-  if (!id) {
+  let id = getStorageItem(CLIENT_ID_KEY);
+  if (!id || typeof id !== "string") {
     id = "alex_" + Math.random().toString(36).slice(2) + Date.now().toString(36);
-    localStorage.setItem(CLIENT_ID_KEY, id);
+    setStorageItem(CLIENT_ID_KEY, id);
   }
   return id;
 }
